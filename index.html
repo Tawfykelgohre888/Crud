@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Crud</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div class="container bg-info py-5 mt-5">
+      <h1 class="text-center py-1">Crud Operation</h1>
+      <div class="form-floating mb-3">
+        <input
+          type="text"
+          class="form-control"
+          id="nameInput"
+          placeholder="Product Name"
+          onblur="valdate(/^[a-zA-Z0-9 ]{5,20}$/,this.value,nameAlert,this)"
+        />
+        <label for="nameInput">Product Name</label>
+      </div>
+      <p class="alert alert-danger d-none" id="nameAlert">
+        Name Must Be From 5 to 20 Char....
+      </p>
+      <div class="form-floating mb-3">
+        <input
+          type="text"
+          class="form-control"
+          id="priceInput"
+          placeholder="Price"
+          onblur="valdate(/^\d{1,6}$/,this.value,priceAlert,this)"
+        />
+        <label for="priceInput">Price</label>
+      </div>
+      <p class="alert alert-danger d-none" id="priceAlert">
+        Price from 6 char Or Number ...
+      </p>
+      <div class="form-floating mb-3">
+        <input
+          type="text"
+          class="form-control"
+          id="CatogoryInput"
+          placeholder="Category"
+          onblur="valdate( /^(technology|mobile|tv)$/i,this.value,alertCatogory,this)"
+        />
+        <label for="CatogoryInput">Category</label>
+      </div>
+      <p class="alert alert-danger d-none" id="alertCatogory">
+        Write technology, mobile, or television
+      </p>
+      <div class="form-floating mb-3">
+        <input
+          type="text"
+          class="form-control"
+          id="DescriptionInput"
+          placeholder="Description"
+          onblur="valdate(/^[\s\S]{3,300}$/,this.value,alertdescrition,this)"
+        />
+        <label for="DescriptionInput">Description</label>
+      </div>
+      <p class="alert alert-danger d-none" id="alertdescrition">
+        Write from 3 to 300
+      </p>
+      <button class="btn btn-primary mb-3" id="btnAdd" onclick="addProduct()">
+        Add Product
+      </button>
+      <button
+        class="btn btn-warning d-none mb-3"
+        id="btnUpdate"
+        onclick="finalUpdate()"
+      >
+        Update
+      </button>
+      <div class="form-floating mb-3">
+        <input
+          type="text"
+          class="form-control"
+          id="searchInput"
+          placeholder="Search Products"
+          oninput="searchProducts()"
+        />
+        <label for="searchInput">Search Products</label>
+      </div>
+    </div>
+    <div class="container mt-5">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Category</th>
+            <th>Description</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody id="Crtona">
+          <!-- Dynamic Data will appear here -->
+        </tbody>
+      </table>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+    <script src="./main.js"></script>
+  </body>
+</html>
